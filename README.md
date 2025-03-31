@@ -11,8 +11,6 @@ The Smart Shopping Recommendation System is an AI-powered application that sugge
 
 🛒 Product Database: Stores product details and customer interactions.
 
-🎨 Interactive Frontend: Built with HTML, CSS, and JavaScript for a seamless experience.
-
 🔗 API Integration: Fetches recommendations dynamically from the FastAPI backend.
 
 🎯 How It Works
