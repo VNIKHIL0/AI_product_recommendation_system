@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendation</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Product Recommendation</h2>
+        <label for="customer-id">Customer ID</label>
+        <input type="text" id="customer-id" placeholder="Enter Customer ID">
+        <button onclick="fetchRecommendations()">Get Recommendations</button>
+        
+        <div class="loader" id="loader"></div>
+
+        <div id="result">
+            <h3 id="customer-info"></h3>
+            <ul id="recommendations"></ul>
+        </div>
+    </div>
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="https://videos.pexels.com/video-files/3130284/3130284-sd_640_360_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
