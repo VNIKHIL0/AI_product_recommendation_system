@@ -1,8 +1,18 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from agents.recommendation_agent import get_customer_preferences
 from agents.product_recommendation_model import recommend_products
 
-app = FastAPI()  # ✅ Make sure this is defined at the top
+app = FastAPI()
+
+# ✅ CORS Configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change to specific domains in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
@@ -29,3 +39,4 @@ def get_product_recommendations(customer_id: str):
     except Exception as e:
         print(f"Error: {str(e)}")
         return {"error": "Internal Server Error", "details": str(e)}
+
