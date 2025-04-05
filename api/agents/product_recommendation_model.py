@@ -3,7 +3,7 @@ import ast  # To convert string to list
 
 def recommend_products(browsing_history):
     try:
-        conn = sqlite3.connect("D:/recommendation_system/api/recommendation_system.db")
+        conn = sqlite3.connect("./api/recommendation_system.db")
         cursor = conn.cursor()
 
         print(f"🔍 Fetching products for preferences: {browsing_history}")  # Debugging Log
