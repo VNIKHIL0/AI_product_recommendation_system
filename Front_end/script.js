@@ -1,6 +1,6 @@
 async function fetchRecommendations() {
     const customerId = document.getElementById("customer-id").value.trim();
-    const apiUrl = `http://127.0.0.1:8000/recommend/${customerId}`;
+    const apiUrl = `https://product-recommendation-api.onrender.com/recommend/${customerId}`;
     const loader = document.getElementById("loader");
     const resultDiv = document.getElementById("result");
     const customerInfo = document.getElementById("customer-info");
