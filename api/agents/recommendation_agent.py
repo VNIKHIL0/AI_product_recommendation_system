@@ -2,7 +2,7 @@ import sqlite3
 
 def get_customer_preferences(customer_id: str):
     try:
-        conn = sqlite3.connect("D:/recommendation_system/api/recommendation_system.db")
+        conn = sqlite3.connect("./api/recommendation_system.db")
         cursor = conn.cursor()
 
         print(f"🔍 Checking database for customer_id: '{customer_id}'")  # Debugging Log
