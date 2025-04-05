@@ -39,4 +39,3 @@ def get_product_recommendations(customer_id: str):
     except Exception as e:
         print(f"Error: {str(e)}")
         return {"error": "Internal Server Error", "details": str(e)}
-
