@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from agents.recommendation_agent import get_customer_preferences
-from agents.product_recommendation_model import recommend_products
+from api.agents.recommendation_agent import get_customer_preferences
+from api.agents.product_recommendation_model import recommend_products
 
 app = FastAPI()
 
