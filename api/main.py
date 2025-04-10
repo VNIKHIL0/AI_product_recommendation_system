@@ -1,14 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.agents.recommendation_agent import get_customer_preferences
-from api.agents.product_recommendation_model import recommend_products
+from agents.recommendation_agent import get_customer_data
+from agents.product_recommendation_model import recommend_products
 
 app = FastAPI()
 
-# ✅ CORS Configuration
+# CORS config
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change to specific domains in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -20,22 +20,24 @@ def home():
 
 @app.get("/recommend/{customer_id}")
 def recommend_customer(customer_id: str):
-    return get_product_recommendations(customer_id)
-
-def get_product_recommendations(customer_id: str):
     try:
-        print(f"Fetching preferences for customer: {customer_id}")
-        preferences = get_customer_preferences(customer_id)
+        customer = get_customer_data(customer_id)
+        if not customer:
+            return {"error": f"No data found for Customer ID {customer_id}"}
 
-        if not preferences:
-            return {"customer_id": customer_id, "recommended_products": ["No recommendations available"]}
+        products = recommend_products(customer["browsing_history"])
 
-        print(f"Customer preferences: {preferences}")
-        recommended_products = recommend_products(preferences)
-
-        print(f"Recommended products: {recommended_products}")
-        return {"customer_id": customer_id, "recommended_products": recommended_products}
-
+        return {
+            "customer_info": {
+                "ID": customer["customer_id"],
+                "Age": customer["age"],
+                "Gender": customer["gender"],
+                "Location": customer["location"],
+                "Segment": customer["segment"],
+                "Season": customer["season"],
+                "Purchased_Products": customer["purchase_history"]  # ✅ NEW
+            },
+            "recommended_products": products
+        }
     except Exception as e:
-        print(f"Error: {str(e)}")
         return {"error": "Internal Server Error", "details": str(e)}
