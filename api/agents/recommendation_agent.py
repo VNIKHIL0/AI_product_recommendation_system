@@ -2,7 +2,7 @@ import sqlite3
 
 def get_customer_data(customer_id: str):
     try:
-        conn = sqlite3.connect("recommendation_system.db")
+        conn = sqlite3.connect("api/recommendation_system.db")
         cursor = conn.cursor()
 
         cursor.execute("""
