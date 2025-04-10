@@ -3,7 +3,7 @@ import ast
 
 def recommend_products(browsing_history):
     try:
-        conn = sqlite3.connect("recommendation_system.db")
+        conn = sqlite3.connect("api/recommendation_system.db")
         cursor = conn.cursor()
 
         if isinstance(browsing_history, str):
